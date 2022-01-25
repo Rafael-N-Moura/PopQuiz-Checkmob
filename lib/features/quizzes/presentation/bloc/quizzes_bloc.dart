@@ -32,6 +32,8 @@ class QuizzesBloc extends Bloc<QuizzesEvent, QuizzesState> {
     on<GetApiQuiz>(getApiQuiz);
     on<StoreQuiz>(storeQuiz);
   }
+  //When an event is triggered, the Bloc communicates with its respective use case
+  //Quando um evento é disparado o Bloc se comunica com o seu respectivo use case
 
   void getHistory(GetHistory event, Emitter<QuizzesState> emit) async {
     emit(Loading());
@@ -61,6 +63,8 @@ class QuizzesBloc extends Bloc<QuizzesEvent, QuizzesState> {
     );
   }
 
+  //This event has a particularity which is to add TextEditingControllers to each question when the http request is successful
+  //Esse evento tem uma particularidade que é adicionar TextEditingControllers para cada questão quando a requisição http for um sucesso
   void getApiQuiz(GetApiQuiz event, Emitter<QuizzesState> emit) async {
     List<TextEditingController> controllers = [];
     emit(Loading());

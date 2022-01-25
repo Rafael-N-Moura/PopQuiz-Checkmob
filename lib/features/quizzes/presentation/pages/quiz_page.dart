@@ -18,6 +18,8 @@ class _QuizPageState extends State<QuizPage> {
     return BlocBuilder<QuizzesBloc, QuizzesState>(
       builder: (context, state) {
         return WillPopScope(
+          //Useful for knowing when the user pressed the device's backbutton, that way I can save the answers and use them later in case the same quiz is opened again.
+          //Serve para saber quando o usuário apertou o botão de voltar do dispositivo, dessa forma posso guardar as respostas e usá-las posteriormente caso o mesmo quiz seja aberto novamente.
           onWillPop: () {
             if (state is LoadedApiQuiz) {
               Util.standByQuiz = state.remoteQuiz;

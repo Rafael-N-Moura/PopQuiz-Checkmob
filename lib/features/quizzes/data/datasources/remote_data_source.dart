@@ -9,6 +9,7 @@ class RemoteDataSource {
   String url =
       'https://my-json-server.typicode.com/Rafael-N-Moura/fixtures2/db';
 
+  //Returns a QuizModel from JSON format
   //Retorna um QuizModel vindo do formato JSON
   Future<QuizModel> getQuizFromApi() async {
     final response = await client.get(

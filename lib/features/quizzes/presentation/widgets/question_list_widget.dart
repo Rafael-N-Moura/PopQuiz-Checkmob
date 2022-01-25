@@ -16,6 +16,8 @@ class QuestionList extends StatelessWidget {
         if (state is Loading) {
           return Util.loadingWidget;
         }
+        //When the state is LoadedApiQuiz there is a check to see if the quiz received from the api has the same id as the last saved quiz. If it have, the answers will be recovered.
+        //Quando o estado é LoadedApiQuiz há uma verificação para saber se o quiz recebido da api tem o mesmo id do último quiz guardado. Se tiver as respostas serão recuperadas.
         if (state is LoadedApiQuiz) {
           if (Util.standByQuiz != null) {
             if (Util.standByQuiz!.id == state.remoteQuiz.id) {

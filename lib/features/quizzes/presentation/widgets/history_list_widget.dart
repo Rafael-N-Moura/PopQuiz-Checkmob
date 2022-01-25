@@ -18,6 +18,8 @@ class HistoryList extends StatelessWidget {
         if (state is Loading) {
           return Util.loadingWidget;
         }
+        //If the list is empty a NoData Widget is shown
+        //Caso a lista esteja vazia um Widget de NoData é mostrado
         if (state is LoadedHistory) {
           if (state.history.isEmpty) {
             return const NoDataWidget();

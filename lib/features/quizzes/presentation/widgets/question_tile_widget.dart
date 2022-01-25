@@ -19,6 +19,8 @@ class _QuestionTileState extends State<QuestionTile> {
     return BlocBuilder<QuizzesBloc, QuizzesState>(
       builder: (context, state) {
         if (state is LoadedApiQuiz) {
+          //Caso haja respostas salvas da última vez que o usúario abriu esse quiz na sessão atual, essas respostas serão postas como valor inical nos TextFields. Caso não haja continuarão em branco
+          //"widget.question.id - 1" pois os ids das questões começam em 1 mas o index na lista começa em 0
           state.controllers[widget.question.id - 1].text =
               widget.question.answer;
           return Padding(
@@ -45,8 +47,8 @@ class _QuestionTileState extends State<QuestionTile> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(
-                    initialValue: null,
+                  child: TextField(
+    
                     controller: state.controllers[widget.question.id - 1],
                     onChanged: (value) {
                       state.remoteQuiz.questions[widget.question.id - 1]
@@ -114,9 +116,11 @@ class _QuestionTileState extends State<QuestionTile> {
             ),
           );
         }
-        return const Text(
-          'Erro Inesperado',
-          style: Util.errorStyle,
+        return const Center(
+          child: Text(
+            'Erro Inesperado',
+            style: Util.errorStyle,
+          ),
         );
       },
     );
